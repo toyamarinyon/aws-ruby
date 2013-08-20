@@ -15,6 +15,6 @@ instance = ec2.instances.create(
 sleep 10 while instance.status == :pending
 puts "Launched instance #{instance.id}, status: #{instance.status}"
 
-File.open('~/.ssh/tamurine_ec2.pam', 'w', 0600) do |file|
+File.open(File.expand_path('~/.ssh/tamurine_ec2.pam'), 'w', 0600) do |file|
 	file.write(keypair.private_key)
 end
